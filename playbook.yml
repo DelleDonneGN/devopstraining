@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+ 
+    - name: Instalar docker
+      apt:
+        name: docker
+        state: present
+        update_cache: yes
+
+    - name: Iniciar contenedor
+      docker_container:
+        name: hellor-world
+        state: started
